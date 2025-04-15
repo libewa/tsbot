@@ -1,5 +1,22 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
-import config from "./config.json" with { type: "json" };
+
+let config: { token: string | undefined, clientId: string | undefined };
+try {
+  config = (await import("./config.json", { with: { type: "json" } }))!.default;
+} catch {
+  config = {
+    token: Deno.env.get("DISCORD_TOKEN"),
+    clientId: Deno.env.get("DISCORD_CLIENT_ID")
+  }
+}
+
+console.log(config);
+
+if (!config.token || !config.clientId) {
+  console.error("Please provide a valid token and client ID in config.json or as environment variables.");
+  Deno.exit(1);
+}
+
 import path from "node:path";
 import fs from "node:fs";
 
