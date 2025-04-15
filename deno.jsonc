@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "cheerio": "npm:cheerio",
+    "discord.js": "npm:discord.js@^14.18.0"
+  }
+}
