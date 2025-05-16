@@ -19,6 +19,7 @@ for (const folder of commandFolders) {
 
     if ("data" in command && "execute" in command && command.enabled) {
       commands.push(command.data.toJSON());
+      console.log("Adding command: ", command.data.name);
     } else {
       console.log(
         `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
